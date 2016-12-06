@@ -1,5 +1,5 @@
 defmodule UsersApiTest do
-  # use ExUnit.Case
+  use ExUnit.Case
   # use ApiTests, %{ host: "http://api.amzn.com/", params: %{aff: AMN_ID}}
   use ApiTests, %{path: "/questions", host: "http://localhost:4000/api"}
   # use ApiTests
@@ -14,38 +14,39 @@ defmodule UsersApiTest do
 
   # end
 
-  test_create "" do
-    # with valid_params
-  end
+  # test_create "" do
+  #   # with valid_params
+  # end
 
   test "CRUD with invalid params" do
 
-    invalid_params
-    |> make_create_request
-    |> test
+    # invalid_params
+    # |> make_create_request
+    # |> test
 
-    valid_params
-    |> create
-    |> test_status
-    |> show
-    |> delete
+    # valid_params
+    # |> create
+    # |> test_status
+    # |> show
+    # |> delete
+
   end
 
   test "CRUD with valid params" do
     #
   end
 
-  test_crud "crud crud" do
-    valid_params = %{}
-    invalid_params = %{}
+  # test_crud "crud crud" do
+  #   valid_params = %{}
+  #   invalid_params = %{}
 
-    # create invalid
-    # response = create_valid
-    # show(id)
-    # update(valid)
-    # deleted
-    # show deleted
-  end
+  #   # create invalid
+  #   # response = create_valid
+  #   # show(id)
+  #   # update(valid)
+  #   # deleted
+  #   # show deleted
+  # end
 
   test_api "costco"
   test_api "target"
