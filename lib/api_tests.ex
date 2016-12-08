@@ -21,6 +21,18 @@ defmodule ApiTests do
   assert_status_code delete 'id' == 200
   """
 
+  def post(url, params = %{}) do
+    IO.puts "post post post"
+  end
+
+  defmacro assert_status_code({:==, _meta, [response, expected_code]}) do
+    #
+  end
+
+  defmacro assert_response({:==, _meta, [response, expected_code]}) do
+    #
+  end
+
   defmacro assert_status_code({:get, _meta, [{operator, _, [url, response_code]} = opts]}) do
     # IO.puts "assert meta in status code"
     # IO.inspect opts
@@ -87,7 +99,7 @@ defmodule ApiTests do
     end
   end
 
-  defmacro test_api(description, opts, do: block) do
+  defmacro test_url(description, opts, do: block) do
     IO.puts "test_ap with options :" <> description
     function_name = String.to_atom("test " <> description)
     quote do
@@ -95,16 +107,16 @@ defmodule ApiTests do
     end
   end
 
-  defmacro test_api(description) do
+  defmacro test_url(description) do
     IO.puts "\tpending implementation : " <> "test " <> description
   end
 
   # defmacro test(message, var \\ quote(do: _), contents) do
-  defmacro test_api(description, do: block) do
+  defmacro test_url(description, do: block) do
     IO.puts "test  : #{ description }"
     function_name = String.to_atom("test " <> description)
     IO.puts "fun name : #{function_name}"
-    Module.put_attribute __MODULE__, :endpoint, "endpoint"
+    # Module.put_attribute __MODULE__, :endpoint, "endpoint"
     quote do
       @host "123"
       def unquote(function_name)(), do: unquote(block)
@@ -117,9 +129,9 @@ defmodule ApiTests do
     Module.register_attribute __MODULE__, :endpoint, accumulate: true, persist: true
     quote do
       def run do
-        @index fn name -> IO.puts("...nnnn") end
+        # @index fn name -> IO.puts("...nnnn") end
         IO.puts "running ..."
-        IO.inspect @path
+        # IO.inspect @path
       end
     end
   end
